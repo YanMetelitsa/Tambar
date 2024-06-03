@@ -28,12 +28,12 @@ define( 'TAMBAR_ASSETS_DIR', plugin_dir_url(  __FILE__ ) . 'assets/' );
 define( 'TAMBAR_VERSION',    $tambar_plugin_data[ 'Version' ] );
 
 /** Connects scripts */
-if ( is_admin_bar_showing() ) {
-	add_action( 'wp_enqueue_scripts', function () {
+add_action( 'wp_enqueue_scripts', function () {
+	if ( is_admin_bar_showing() ) {
 		wp_enqueue_style(  'tambar-styles',  TAMBAR_ASSETS_DIR . 'css/tambar.css', [], TAMBAR_VERSION, 'all' );
 		wp_enqueue_script( 'tambar-scripts', TAMBAR_ASSETS_DIR . 'js/tambar.js',   [], TAMBAR_VERSION, false );
-	});
-}
+	}
+});
 
 /** Adds options link */
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function ( $links ) {
