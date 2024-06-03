@@ -16,11 +16,6 @@
 /** Exit if accessed directly */
 if ( !defined( 'ABSPATH' ) ) exit;
 
-
-/**
- * Init plugin
- */
-
 /** Get plugin data */
 if( !function_exists( 'get_plugin_data' ) ) {
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -32,25 +27,15 @@ define( 'TAMBAR_DIR',        plugin_dir_path( __FILE__ ) );
 define( 'TAMBAR_ASSETS_DIR', plugin_dir_url(  __FILE__ ) . 'assets/' );
 define( 'TAMBAR_VERSION',    $tambar_plugin_data[ 'Version' ] );
 
-
-/**
- * Connect styles and scripts
- */
-
-/** Connect scripts */
-add_action( 'wp_enqueue_scripts', function () {
-	if ( is_admin_bar_showing() ) {
+/** Connects scripts */
+if ( is_admin_bar_showing() ) {
+	add_action( 'wp_enqueue_scripts', function () {
 		wp_enqueue_style(  'tambar-styles',  TAMBAR_ASSETS_DIR . 'css/tambar.css', [], TAMBAR_VERSION, 'all' );
 		wp_enqueue_script( 'tambar-scripts', TAMBAR_ASSETS_DIR . 'js/tambar.js',   [], TAMBAR_VERSION, false );
-	}
-});
+	});
+}
 
-
-/**
- * Options features
- */
-
-/** Add options link */
+/** Adds options link */
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function ( $links ) {
 	$url          = get_admin_url( null, 'options-general.php?page=tambar' );
 	$options_link = '<a href="' . $url . '">' . __( 'Settings', 'tambar' ) . '</a>';
@@ -60,7 +45,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function ( $li
 	return $links;
 });
 
-/** Register options */
+/** Registers options */
 add_action( 'init', function () {
 	register_setting(
 		'tambar',								// Option group
@@ -105,7 +90,7 @@ add_action( 'init', function () {
 	);
 });
 
-/** Add options sections and fields */
+/** Adds options sections and fields */
 add_action( 'admin_init', function () {
 	/** Add sections */
 	add_settings_section(
@@ -194,7 +179,7 @@ add_action( 'admin_init', function () {
 	);
 });
 
-/** Add options page */
+/** Adds options page */
 add_action( 'admin_menu', function () {
 	add_options_page(
 		__( 'Tambar settings', 'tambar' ),		// Page title
@@ -205,12 +190,7 @@ add_action( 'admin_menu', function () {
 	);
 });
 
-
-/**
- * Set body class and print switcher
- */
-
-/** Set body class */
+/** Sets body class */
 add_filter( 'body_class', function ( $classes ) {
 	if ( is_admin_bar_showing() ) {
 		/** Admin bar classes */
@@ -230,7 +210,7 @@ add_filter( 'body_class', function ( $classes ) {
 		/** Show/hide switcher and admin bar classes */
 		$is_switcher_enable = get_option( 'tambar_is_switcher_enable' );
 	
-		if ( isset( $_COOKIE[ 'tambar-is-hidden' ] ) && $_COOKIE[ 'tambar-is-hidden' ] == 'true' ) {
+		if ( isset( $_COOKIE[ 'tambar-is-hidden' ] ) && boolval( $_COOKIE[ 'tambar-is-hidden' ] ) ) {
 			if ( $is_switcher_enable ) {
 				$classes[] = 'tambar-hidden';
 			}
@@ -240,7 +220,7 @@ add_filter( 'body_class', function ( $classes ) {
 	return $classes;
 });
 
-/** Print switcher */
+/** Prints switcher */
 add_action( 'wp_before_admin_bar_render', function () {
 	$is_switcher_enable = get_option( 'tambar_is_switcher_enable' );
 
@@ -248,11 +228,6 @@ add_action( 'wp_before_admin_bar_render', function () {
 		echo '<div id="tambar-switcher" onclick="tambarSwitcherClick()"><span></span></div>';
 	}
 });
-
-
-/**
- * Call back functions
- */
 
 function tambar_print_options_page () : void {
 	?>
@@ -280,6 +255,7 @@ function tambar_print_options_section () : void {
 
 function tambar_print_select_field ( array $args ) : void {
 	$option_value = get_option( $args[ 'label_for' ] );
+
 	?>
 		<select name="<?= $args[ 'label_for' ]; ?>" id="<?= $args[ 'label_for' ]; ?>">
 			<?php foreach ( $args[ 'values' ] as $value => $title ) : ?>
@@ -293,6 +269,7 @@ function tambar_print_select_field ( array $args ) : void {
 }
 function tambar_print_checkbox_field ( array $args ) : void {
 	$option_value = get_option( $args[ 'label_for' ] );
+
 	?>
 		<label for="<?= $args[ 'label_for' ]; ?>">
 			<input
