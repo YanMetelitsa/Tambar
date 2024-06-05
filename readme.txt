@@ -1,7 +1,7 @@
 === Tambar – Bottom Admin Bar ===
 Contributors: yanmetelitsa
 Tags: adminbar, admin, bar, position, bottom
-Tested up to: 6.5.3
+Tested up to: 6.5.4
 Requires at least: 6.4
 Stable tag: 2.2.0
 License: GPLv3
