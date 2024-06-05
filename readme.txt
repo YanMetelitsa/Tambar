@@ -3,7 +3,7 @@ Contributors: yanmetelitsa
 Tags: adminbar, admin, bar, position, bottom
 Tested up to: 6.5.3
 Requires at least: 6.4
-Stable tag: 2.1.9
+Stable tag: 2.2.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -33,6 +33,9 @@ To use the plugin, you need to add the [`body_class()`](https://developer.wordpr
 This function should go inside the `body` tag, which is usually located in the `header.php` file in your theme's directory.
 
 == Changelog ==
+
+= 2.2.0 =
+* Minor fixes
 
 = 2.1.9 =
 * Now plugin's assets (JS and CSS) are loaded only when the admin bar is showed
