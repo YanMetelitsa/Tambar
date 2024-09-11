@@ -25,8 +25,8 @@ This function should go inside the `body` tag, which is usually located in the `
 
 # Changelog
 
-## 2.2.0
-* Minor fixes
+## 2.2.1
+* Show/hide cookie value read bug fix
 
 ## 2.1.9
 * Now plugin's assets (JS and CSS) are loaded only when the admin bar is showed

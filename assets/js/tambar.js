@@ -5,6 +5,8 @@ function tambarSwitcherClick () {
 	document.querySelectorAll( 'body' ).forEach( body => {
 		body.classList.toggle( 'tambar-hidden' );
 
-		document.cookie = `tambar-is-hidden=${body.classList.contains( 'tambar-hidden' )};max-age=${10*3600*24};path=/;`;
+		const isHidden = body.classList.contains( 'tambar-hidden' ) ? 1 : 0;
+
+		document.cookie = `tambar-is-hidden=${isHidden};max-age=${10*3600*24};path=/;`;
 	});
 }

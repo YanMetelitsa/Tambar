@@ -3,7 +3,7 @@
 /*
  * Plugin Name:       Tambar – Bottom Admin Bar
  * Description:       Change the position of the admin bar at the frontend.
- * Version:           2.2.0
+ * Version:           2.2.1
  * Tested up to:      6.6.1
  * Requires at least: 6.4
  * Author:            Yan Metelitsa
@@ -17,8 +17,8 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /** Get plugin data */
-if( !function_exists( 'get_plugin_data' ) ) {
-	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+if ( !function_exists( 'get_plugin_data' ) ) {
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 $tambar_plugin_data = get_plugin_data( __FILE__ );
 
@@ -38,7 +38,7 @@ add_action( 'wp_enqueue_scripts', function () {
 /** Adds options link */
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function ( $links ) {
 	$url          = get_admin_url( null, 'options-general.php?page=tambar' );
-	$options_link = '<a href="' . $url . '">' . __( 'Settings', 'tambar' ) . '</a>';
+	$options_link = sprintf( '<a href="%s">%s</a>', $url, __( 'Settings', 'tambar' ) );
 
 	array_unshift( $links, $options_link );
 
@@ -52,7 +52,7 @@ add_action( 'admin_menu', function () {
 		__( 'Tambar', 'tambar' ),						// Menu item title
 		'manage_options',								// Capabilities
 		'tambar',										// Slug
-		function ( $args ) {							// Print call back
+		function ( $args ) {						// Print call back
 			include TAMBAR_DIR . 'parts/page.php';
 		},
 	);
@@ -109,7 +109,7 @@ add_action( 'admin_init', function () {
 	add_settings_section(
 		'tambar_section_position',						// Section slug
 		__( 'Admin bar position', 'tambar' ),			// Section title
-		function ( $args ) {							// Print call back
+		function ( $args ) {						// Print call back
 			include TAMBAR_DIR . 'parts/section.php';
 		},
 		'tambar',										// Section page slug
@@ -117,7 +117,7 @@ add_action( 'admin_init', function () {
 	add_settings_section(
 		'tambar_section_switcher',						// Section slug
 		__( 'Admin bar switcher', 'tambar' ),			// Section title
-		function ( $args ) {							// Print call back
+		function ( $args ) {						// Print call back
 			include TAMBAR_DIR . 'parts/section.php';
 		},
 		'tambar',										// Section page slug
@@ -127,7 +127,7 @@ add_action( 'admin_init', function () {
 	add_settings_field(
 		'tambar_desktop_position',						// Option slug
 		__( 'Desktop', 'tambar' ),						// Option title
-		function ( $args ) {							// Print call back
+		function ( $args ) {						// Print call back
 			include TAMBAR_DIR . 'parts/select.php';
 		},
 		'tambar',										// Option page
@@ -143,7 +143,7 @@ add_action( 'admin_init', function () {
 	add_settings_field(
 		'tambar_mobile_position',						// Option slug
 		__( 'Mobile', 'tambar' ),						// Option title
-		function ( $args ) {							// Print call back
+		function ( $args ) {						// Print call back
 			include TAMBAR_DIR . 'parts/select.php';
 		},
 		'tambar',										// Option page
@@ -160,7 +160,7 @@ add_action( 'admin_init', function () {
 	add_settings_field(
 		'tambar_is_switcher_enable',					// Option slug
 		__( 'Enable', 'tambar' ),						// Option title
-		function ( $args ) {							// Print call back
+		function ( $args ) {						// Print call back
 			include TAMBAR_DIR . 'parts/checkbox.php';
 		},
 		'tambar',										// Option page
@@ -173,7 +173,7 @@ add_action( 'admin_init', function () {
 	add_settings_field(
 		'tambar_desktop_switcher_position',				// Option slug
 		__( 'Desktop', 'tambar' ),						// Option title
-		function ( $args ) {							// Print call back
+		function ( $args ) {						// Print call back
 			include TAMBAR_DIR . 'parts/select.php';
 		},
 		'tambar',										// Option page
@@ -190,7 +190,7 @@ add_action( 'admin_init', function () {
 	add_settings_field(
 		'tambar_mobile_switcher_position',				// Option slug
 		__( 'Mobile', 'tambar' ),						// Option title
-		function ( $args ) {							// Print call back
+		function ( $args ) {						// Print call back
 			include TAMBAR_DIR . 'parts/select.php';
 		},
 		'tambar',										// Option page
@@ -213,21 +213,22 @@ add_filter( 'body_class', function ( $classes ) {
 		$desktop_position   = get_option( 'tambar_desktop_position' );
 		$mobile_position    = get_option( 'tambar_mobile_position' );
 		
-		$classes[] = 'tambar-desktop-' . $desktop_position;
-		$classes[] = 'tambar-mobile-' . $mobile_position;
+		$classes[] = "tambar-desktop-$desktop_position";
+		$classes[] = "tambar-mobile-$mobile_position";
 		
-		/** Switcher classes */
-		$switcher_desktop_position = get_option( 'tambar_desktop_switcher_position' );
-		$switcher_mobile_position  = get_option( 'tambar_mobile_switcher_position' );
-	
-		$classes[] = 'tambar-desktop-switcher-' . $switcher_desktop_position;
-		$classes[] = 'tambar-mobile-switcher-' . $switcher_mobile_position;
-		
-		/** Show/hide switcher and admin bar classes */
+		/** Check switcher options */
 		$is_switcher_enable = get_option( 'tambar_is_switcher_enable' );
 	
-		if ( isset( $_COOKIE[ 'tambar-is-hidden' ] ) && boolval( $_COOKIE[ 'tambar-is-hidden' ] ) ) {
-			if ( $is_switcher_enable ) {
+		if ( $is_switcher_enable ) {
+			/** Switcher classes */
+			$switcher_desktop_position = get_option( 'tambar_desktop_switcher_position' );
+			$switcher_mobile_position  = get_option( 'tambar_mobile_switcher_position' );
+		
+			$classes[] = "tambar-desktop-switcher-$switcher_desktop_position";
+			$classes[] = "tambar-mobile-switcher-$switcher_mobile_position";
+
+			/** Hide by cookie value */
+			if ( isset( $_COOKIE[ 'tambar-is-hidden' ] ) && boolval( $_COOKIE[ 'tambar-is-hidden' ] ) ) {
 				$classes[] = 'tambar-hidden';
 			}
 		}

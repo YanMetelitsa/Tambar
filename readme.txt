@@ -3,7 +3,7 @@ Contributors: yanmetelitsa
 Tags: adminbar, admin, bar, position, bottom
 Tested up to: 6.6.1
 Requires at least: 6.4
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,8 +34,8 @@ This function should go inside the `body` tag, which is usually located in the `
 
 == Changelog ==
 
-= 2.2.0 =
-* Minor fixes
+= 2.2.1 =
+* Show/hide cookie value read bug fix
 
 = 2.1.9 =
 * Now plugin's assets (JS and CSS) are loaded only when the admin bar is showed
