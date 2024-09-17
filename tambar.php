@@ -38,7 +38,10 @@ add_action( 'wp_enqueue_scripts', function () {
 /** Adds options link */
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function ( $links ) {
 	$url          = get_admin_url( null, 'options-general.php?page=tambar' );
-	$options_link = sprintf( '<a href="%s">%s</a>', $url, __( 'Settings', 'tambar' ) );
+	$options_link = sprintf( '<a href="%s">%s</a>',
+		$url,
+		__( 'Settings', 'tambar' ),
+	);
 
 	array_unshift( $links, $options_link );
 
@@ -60,6 +63,7 @@ add_action( 'admin_menu', function () {
 
 /** Registers options */
 add_action( 'init', function () {
+	// Position
 	register_setting(
 		'tambar',								// Option group
 		'tambar_desktop_position',				// Option slug
@@ -77,6 +81,7 @@ add_action( 'init', function () {
 		]
 	);
 
+	// Swticher
 	register_setting(
 		'tambar',								// Option group
 		'tambar_is_switcher_enable',			// Option slug
@@ -105,7 +110,7 @@ add_action( 'init', function () {
 
 /** Adds options sections and fields */
 add_action( 'admin_init', function () {
-	/** Add sections */
+	// Position
 	add_settings_section(
 		'tambar_section_position',						// Section slug
 		__( 'Admin bar position', 'tambar' ),			// Section title
@@ -114,16 +119,6 @@ add_action( 'admin_init', function () {
 		},
 		'tambar',										// Section page slug
 	);
-	add_settings_section(
-		'tambar_section_switcher',						// Section slug
-		__( 'Admin bar switcher', 'tambar' ),			// Section title
-		function ( $args ) {						// Print call back
-			include TAMBAR_DIR . 'parts/section.php';
-		},
-		'tambar',										// Section page slug
-	);
-
-	/** Add fields */
 	add_settings_field(
 		'tambar_desktop_position',						// Option slug
 		__( 'Desktop', 'tambar' ),						// Option title
@@ -157,6 +152,15 @@ add_action( 'admin_init', function () {
 		],
 	);
 
+	// Switcher
+	add_settings_section(
+		'tambar_section_switcher',						// Section slug
+		__( 'Admin bar switcher', 'tambar' ),			// Section title
+		function ( $args ) {						// Print call back
+			include TAMBAR_DIR . 'parts/section.php';
+		},
+		'tambar',										// Section page slug
+	);
 	add_settings_field(
 		'tambar_is_switcher_enable',					// Option slug
 		__( 'Enable', 'tambar' ),						// Option title
@@ -242,6 +246,6 @@ add_action( 'wp_before_admin_bar_render', function () {
 	$is_switcher_enable = get_option( 'tambar_is_switcher_enable' );
 
 	if ( $is_switcher_enable ) {
-		echo '<div id="tambar-switcher" onclick="tambarSwitcherClick()"><span></span></div>';
+		include TAMBAR_DIR . 'parts/switcher.php';
 	}
 });

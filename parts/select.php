@@ -5,13 +5,15 @@
 	$option_value = get_option( $args[ 'label_for' ] );
 ?>
 
-<select name="<?= $args[ 'label_for' ]; ?>" id="<?= $args[ 'label_for' ]; ?>">
+<select name="<?php echo $args[ 'label_for' ]; ?>" id="<?php echo $args[ 'label_for' ]; ?>">
 	<?php foreach ( $args[ 'values' ] as $value => $title ) : ?>
-		<option value="<?= $value; ?>" <?= ( $option_value == $value ? 'selected' : '' ); ?>>
-			<?= $title; ?>
-		</option>
+		<?php printf( '<option value="%s" %s>%s</option>',
+			$value,
+			selected( $option_value, $value ),
+			$title,
+		); ?>
 	<?php endforeach; ?>
 </select>
 <?php if ( isset( $args[ 'description' ] ) ) : ?>
-	<p class="description"><?= $args[ 'description' ]; ?></p>
+	<p class="description"><?php echo $args[ 'description' ]; ?></p>
 <?php endif; ?>
