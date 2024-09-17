@@ -9,7 +9,7 @@
 	<?php foreach ( $args[ 'values' ] as $value => $title ) : ?>
 		<?php printf( '<option value="%s" %s>%s</option>',
 			$value,
-			selected( $option_value, $value ),
+			selected( $option_value, $value, false ),
 			$title,
 		); ?>
 	<?php endforeach; ?>

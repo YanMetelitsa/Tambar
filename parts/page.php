@@ -9,7 +9,7 @@
 		<span style="font-size: 12px;"><?php echo TAMBAR_VERSION; ?></span>
 	</h1>
 
-	<form action="options.php" method="post">
+	<form action="options.php" method="POST">
 		<p><?php _e( 'To make the plugin works, you must use <code>body_class()</code> function in your template.', 'tambar' ); ?></p>
 
 		<?php 

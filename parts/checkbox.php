@@ -8,7 +8,7 @@
 <label for="<?php echo $args[ 'label_for' ]; ?>">
 	<?php printf( '<input type="checkbox" name="%1$s" id="%1$s" value="1" %2$s>',
 		$args[ 'label_for' ],
-		$option_value ? 'checked' : '',
+		checked( $option_value, true, false ),
 	); ?>
 	<?php echo $args[ 'label' ]; ?>
 </label>
