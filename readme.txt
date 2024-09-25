@@ -1,21 +1,21 @@
 === Tambar – Bottom Admin Bar ===
 Contributors: yanmetelitsa
 Tags: adminbar, admin, bar, position, bottom
-Tested up to: 6.6.1
+Tested up to: 6.6.2
 Requires at least: 6.4
 Stable tag: 2.2.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Fixed header is a common feature of many websites, but it can interfere with the WordPress admin bar. Tambar is a solution for this problem!
+A fixed header is a common feature on many websites, but it can interfere with the WordPress admin bar. Tambar solves this problem!
 
 == Description ==
 
 **Features**
 
-* Move admin bar to the bottom
-* Different admin bar positions for desktop and mobile
-* Use switcher to hide admin bar
+* Move the admin bar to the bottom
+* Set different admin bar positions for desktop and mobile
+* Use a switcher to hide the admin bar
 
 == Installation ==
 
@@ -30,7 +30,7 @@ Fixed header is a common feature of many websites, but it can interfere with the
 
 To use the plugin, you need to add the [`body_class()`](https://developer.wordpress.org/reference/functions/body_class/) function to your theme.
 
-This function should go inside the `body` tag, which is usually located in the `header.php` file in your theme's directory.
+This function should be placed inside the `<body>` tag, typically found in the `header.php` file within your theme's directory.
 
 == Changelog ==
 

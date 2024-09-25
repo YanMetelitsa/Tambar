@@ -1,12 +1,12 @@
 # Description
 
-Fixed header is a common feature of many websites, but it can interfere with the WordPress admin bar. Tambar is a solution for this problem!
+A fixed header is a common feature on many websites, but it can interfere with the WordPress admin bar. Tambar solves this problem!
 
 ## Features
 
-* Move admin bar to the bottom
-* Different admin bar positions for desktop and mobile
-* Use switcher to hide admin bar
+* Move the admin bar to the bottom
+* Set different admin bar positions for desktop and mobile
+* Use a switcher to hide the admin bar
 
 # Installation
 
@@ -21,7 +21,7 @@ Fixed header is a common feature of many websites, but it can interfere with the
 
 To use the plugin, you need to add the [`body_class()`](https://developer.wordpress.org/reference/functions/body_class/) function to your theme.
 
-This function should go inside the `body` tag, which is usually located in the `header.php` file in your theme's directory.
+This function should be placed inside the `<body>` tag, typically found in the `header.php` file within your theme's directory.
 
 # Changelog
 
