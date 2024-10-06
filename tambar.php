@@ -5,7 +5,7 @@
  * Description:       Easily change the position of the admin bar on the frontend.
  * Version:           2.2.1
  * Tested up to:      6.6.2
- * Requires at least: 6.4
+ * Requires at least: 6.0
  * Author:            Yan Metelitsa
  * Author URI:        https://yanmet.com/
  * License:           GPLv3
