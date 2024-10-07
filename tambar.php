@@ -4,8 +4,9 @@
  * Plugin Name:       Tambar – Bottom Admin Bar
  * Description:       Easily change the position of the admin bar on the frontend.
  * Version:           2.2.1
- * Tested up to:      6.6.2
+ * Requires PHP:      7.3
  * Requires at least: 6.0
+ * Tested up to:      6.6.2
  * Author:            Yan Metelitsa
  * Author URI:        https://yanmet.com/
  * License:           GPLv3

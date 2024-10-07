@@ -32,23 +32,17 @@ This function should be placed inside the `<body>` tag, typically found in the `
 * Now plugin's assets (JS and CSS) are loaded only when the admin bar is showed
 
 ## 2.1.6
-* Switcher position can be changed
-
-## 2.1.5
 * New switcher options
 
 ## 2.1.0
-* Admin bar state via PHP (not twinks)
+* Admin bar state via PHP (no twinks)
 * New options logic
 
 ## 2.0.6
 * Admin bar position options for mobile
 
 ## 2.0
-* New, more flexible plugin core
-
-## 1.0.3
-* Show/hide admin bar animation
+* New flexible plugin core
 
 ## 1.0.0
 * Switched to SCSS
