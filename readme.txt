@@ -12,6 +12,8 @@ A fixed header is a common feature on many websites, but it can interfere with t
 
 == Description ==
 
+A fixed header is a common feature on many websites, but it can interfere with the WordPress admin bar. Tambar solves this problem!
+
 **Features**
 
 * Move the admin bar to the bottom
