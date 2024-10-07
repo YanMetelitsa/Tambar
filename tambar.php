@@ -87,7 +87,7 @@ add_action( 'init', function () {
 // Adds options sections and fields.
 add_action( 'admin_init', function () {
 	// Position.
-	add_settings_section( 'tambar_section_position', __( 'Admin bar position', 'tambar' ),
+	add_settings_section( 'tambar_section_position', __( 'Admin Bar Position', 'tambar' ),
 		fn ( $args ) => include TAMBAR_DIR . 'parts/section.php',
 		'tambar',
 	);
@@ -117,7 +117,7 @@ add_action( 'admin_init', function () {
 	);
 
 	// Switcher.
-	add_settings_section( 'tambar_section_switcher', __( 'Admin bar switcher', 'tambar' ),
+	add_settings_section( 'tambar_section_switcher', __( 'Switcher', 'tambar' ),
 		fn ( $args ) => include TAMBAR_DIR . 'parts/section.php',
 		'tambar',
 	);
@@ -127,7 +127,7 @@ add_action( 'admin_init', function () {
 		'tambar_section_switcher',
 		[
 			'label_for' => 'tambar_is_switcher_enable',
-			'label'     => __( 'Is admin bar switcher visible', 'tambar' ),
+			'label'     => __( 'Display the switcher', 'tambar' ),
 		],
 	);
 	add_settings_field( 'tambar_desktop_switcher_position', __( 'Desktop', 'tambar' ),
@@ -140,7 +140,7 @@ add_action( 'admin_init', function () {
 				'left'  => __( 'Left', 'tambar' ),
 				'right' => __( 'Right', 'tambar' ),
 			],
-			'description' => __( 'Position of the admin bar switcher on desktop', 'tambar' ),
+			'description' => __( 'Position of the admin bar switcher on desktop.', 'tambar' ),
 		],
 	);
 	add_settings_field( 'tambar_mobile_switcher_position', __( 'Mobile', 'tambar' ),
@@ -153,7 +153,7 @@ add_action( 'admin_init', function () {
 				'left'  => __( 'Left', 'tambar' ),
 				'right' => __( 'Right', 'tambar' ),
 			],
-			'description' => __( 'Position of the admin bar switcher on mobile', 'tambar' ),
+			'description' => __( 'Position of the admin bar switcher on mobile.', 'tambar' ),
 		],
 	);
 });

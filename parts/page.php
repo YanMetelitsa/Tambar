@@ -10,7 +10,7 @@
 	</h1>
 
 	<form action="options.php" method="POST">
-		<p><?php echo wp_kses_post( __( 'To make the plugin works, you must use <code>body_class()</code> function in your template.', 'tambar' ) ); ?></p>
+		<p><?php echo wp_kses_post( __( 'To make the plugin work, you must use the <code>body_class()</code> function in your template.', 'tambar' ) ); ?></p>
 
 		<?php 
 			settings_fields( 'tambar' );
