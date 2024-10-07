@@ -2,7 +2,12 @@
 	// Exits if accessed directly.
 	if ( ! defined( 'ABSPATH' ) ) exit;
 
-	$option_value = get_option( $args[ 'label_for' ] );
+	$option_name  = $args[ 'option' ] ?? $args[ 'label_for' ];
+	$option_value = get_option( $option_name, TAMBAR_DEFAULT_SETTINGS[ $option_name ] );
+
+	if ( is_array( $option_value ) ) {
+		$option_value = $option_value[ $args[ 'name' ] ?? TAMBAR_DEFAULT_SETTINGS[ $option_name ] ];
+	}
 ?>
 
 <label for="<?php echo esc_attr( $args[ 'label_for' ] ); ?>">
@@ -10,5 +15,7 @@
 		esc_attr( $args[ 'label_for' ] ),
 		checked( $option_value, true, false ),
 	); ?>
-	<?php echo esc_html( $args[ 'label' ] ); ?>
+	<?php if ( isset( $args[ 'label' ] ) ) : ?>
+		<?php echo esc_html( $args[ 'label' ] ); ?>
+	<?php endif; ?>
 </label>

@@ -6,7 +6,8 @@ A fixed header is a common feature on many websites, but it can interfere with t
 
 * Move the admin bar to the bottom
 * Set different admin bar positions for desktop and mobile
-* Use a switcher to hide the admin bar
+* Use switcher to hide the admin bar
+* Hide the admin bar for selected roles
 
 # Installation
 
@@ -24,6 +25,9 @@ To use the plugin, you need to add the [`body_class()`](https://developer.wordpr
 This function should be placed inside the `<body>` tag, typically found in the `header.php` file within your theme's directory.
 
 # Changelog
+
+ ## 2.3.0
+* Settings that allow hiding the admin bar for selected roles
 
 ## 2.2.1
 * Show/hide cookie value read bug fix

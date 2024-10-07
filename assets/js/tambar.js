@@ -1,7 +1,7 @@
 'use strict';
 
 /** Toggles WordPress adminbar state */
-function tambarSwitcherClick () {
+function tambarToggle () {
 	document.querySelectorAll( 'body' ).forEach( body => {
 		body.classList.toggle( 'tambar-hidden' );
 

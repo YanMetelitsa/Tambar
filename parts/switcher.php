@@ -3,6 +3,4 @@
 	if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 
-<div id="tambar-switcher" onclick="tambarSwitcherClick()">
-	<span></span>
-</div>
+<div id="tambar-switcher" onclick="tambarToggle()"><span></span></div>
