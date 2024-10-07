@@ -125,7 +125,7 @@ add_action( 'admin_init', function () {
 		'switcher',
 		[
 			'label_for' => 'tambar_is_switcher_enable',
-			'label'     => __( 'Display the switcher', 'tambar' ),
+			'label'     => __( 'Display switcher', 'tambar' ),
 		],
 	);
 
