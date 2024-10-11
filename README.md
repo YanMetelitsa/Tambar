@@ -25,8 +25,10 @@ To use the plugin, you need to add the [`body_class()`](https://developer.wordpr
 This function should be placed inside the `<body>` tag, typically found in the `header.php` file within your theme's directory.
 
 # Changelog
+## 2.3.1
+* Show admin bar for role setting bux fix
 
- ## 2.3.0
+## 2.3.0
 * Settings that allow hiding the admin bar for selected roles
 
 ## 2.2.1

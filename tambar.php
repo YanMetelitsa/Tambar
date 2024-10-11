@@ -3,7 +3,7 @@
 /*
  * Plugin Name:       Tambar – Bottom Admin Bar
  * Description:       Easily change the position of the admin bar on the frontend.
- * Version:           2.3.0
+ * Version:           2.3.1
  * Requires PHP:      7.3
  * Requires at least: 6.0
  * Tested up to:      6.6.2
@@ -184,30 +184,34 @@ add_action( 'admin_init', function () {
 			'tambar',
 			'roles',
 			[
-				'label_for' => "tambar_show_for_role[$role]",
-				'option'    => 'tambar_show_for_role',
-				'name'      => $role,
+				'label_for'   => "tambar_show_for_role[$role]",
+				'option_name' => 'tambar_show_for_role',
+				'option_key'  => $role,
 			],
 		);
 	}
 });
 
 // Hides admin bar for roles.
-add_filter( 'show_admin_bar', function (){
+add_filter( 'show_admin_bar', function ( $show_admin_bar ) {
+	if ( ! is_user_logged_in() ) {
+		return $show_admin_bar;
+	}
+
 	$current_user_roles = wp_get_current_user()->roles;
 	$show_for_roles     = get_option( 'tambar_show_for_role', TAMBAR_DEFAULT_SETTINGS[ 'tambar_show_for_role' ] );
 
-	if ( true === $show_for_roles ) {
-		return true;
+	if ( ! is_array( $show_for_roles ) ) {
+		return $show_admin_bar;
 	}
 
-	foreach ( $current_user_roles as $role ) {
-		if ( ! isset( $show_for_roles[ $role ] ) || ! $show_for_roles[ $role ] ) {
-			return false;
-		}
+	$show_for_roles = array_keys( $show_for_roles );
+
+	if ( empty( array_intersect( $current_user_roles, $show_for_roles ) ) ) {
+		return false;
 	}
 
-	return true;
+	return $show_admin_bar;
 });
 
 // Sets <body> tag classes.

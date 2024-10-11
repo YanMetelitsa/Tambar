@@ -2,11 +2,11 @@
 	// Exits if accessed directly.
 	if ( ! defined( 'ABSPATH' ) ) exit;
 
-	$option_name  = $args[ 'option' ] ?? $args[ 'label_for' ];
+	$option_name  = $args[ 'option_name' ] ?? $args[ 'label_for' ];
 	$option_value = get_option( $option_name, TAMBAR_DEFAULT_SETTINGS[ $option_name ] );
 
-	if ( is_array( $option_value ) ) {
-		$option_value = $option_value[ $args[ 'name' ] ?? TAMBAR_DEFAULT_SETTINGS[ $option_name ] ];
+	if ( is_array( $option_value ) && isset( $args[ 'option_key' ] ) ) {
+		$option_value = $option_value[ $args[ 'option_key' ] ] ?? false;
 	}
 ?>
 
