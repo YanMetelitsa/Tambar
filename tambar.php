@@ -6,7 +6,7 @@
  * Version:           2.3.1
  * Requires PHP:      7.3
  * Requires at least: 6.0
- * Tested up to:      6.6.2
+ * Tested up to:      6.7
  * Author:            Yan Metelitsa
  * Author URI:        https://yanmet.com/
  * License:           GPLv3
