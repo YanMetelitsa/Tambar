@@ -1,7 +1,7 @@
 === Tambar – Bottom Admin Bar ===
 Contributors: yanmetelitsa
 Tags: adminbar, admin, bar, position, bottom
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 Requires PHP: 7.3
 Requires at least: 6.0
 Tested up to: 6.7
@@ -37,6 +37,9 @@ To use the plugin, you need to add the [`body_class()`](https://developer.wordpr
 This function should be placed inside the `<body>` tag, typically found in the `header.php` file within your theme's directory.
 
 == Changelog ==
+
+= 2.3.2 =
+* Minor fixes
 
 = 2.3.1 =
 * Show admin bar for role setting bux fix
