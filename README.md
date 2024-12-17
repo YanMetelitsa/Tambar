@@ -26,6 +26,9 @@ This function should be placed inside the `<body>` tag, typically found in the `
 
 # Changelog
 
+## 2.3.3
+* WordPress 6.7.0 `get_plugin_data() fix`
+
 ## 2.3.2
 * Minor fixes
 
