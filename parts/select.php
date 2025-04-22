@@ -1,6 +1,6 @@
 <?php
 	// Exits if accessed directly.
-	if ( ! defined( 'ABSPATH' ) ) exit;
+	defined( 'ABSPATH' ) || exit;
 
 	$option_value = get_option( $args[ 'label_for' ] );
 ?>

@@ -3,10 +3,10 @@
 /*
  * Plugin Name:       Tambar – Bottom Admin Bar
  * Description:       Easily change the position of the admin bar on the frontend.
- * Version:           2.3.3
+ * Version:           2.3.4
  * Requires PHP:      7.3
  * Requires at least: 6.0
- * Tested up to:      6.7.1
+ * Tested up to:      6.8
  * Author:            Yan Metelitsa
  * Author URI:        https://yanmet.com/
  * License:           GPLv3
@@ -77,9 +77,10 @@ add_action( 'admin_init', function () {
 		'tambar',
 	);
 
+	// phpcs:ignore
 	register_setting( 'tambar', 'tambar_desktop_position', [
-		'type'    => TAMBAR_DEFAULT_SETTINGS[ 'tambar_desktop_position' ],
-		'default' => 'bottom',
+		'type'    => 'string',
+		'default' => TAMBAR_DEFAULT_SETTINGS[ 'tambar_desktop_position' ],
 	]);
 	add_settings_field( 'tambar_desktop_position', __( 'Desktop', 'tambar' ),
 		fn ( $args ) => include TAMBAR_DIR . 'parts/select.php',
@@ -94,6 +95,7 @@ add_action( 'admin_init', function () {
 		],
 	);
 
+	// phpcs:ignore
 	register_setting( 'tambar', 'tambar_mobile_position', [
 		'type'    => 'string',
 		'default' => TAMBAR_DEFAULT_SETTINGS[ 'tambar_mobile_position' ],
@@ -117,6 +119,7 @@ add_action( 'admin_init', function () {
 		'tambar',
 	);
 
+	// phpcs:ignore
 	register_setting( 'tambar', 'tambar_is_switcher_enable', [
 		'type'    => 'boolean',
 		'default' => TAMBAR_DEFAULT_SETTINGS[ 'tambar_is_switcher_enable' ],
@@ -131,6 +134,7 @@ add_action( 'admin_init', function () {
 		],
 	);
 
+	// phpcs:ignore
 	register_setting( 'tambar', 'tambar_desktop_switcher_position', [
 		'type'    => 'string',
 		'default' => TAMBAR_DEFAULT_SETTINGS[ 'tambar_desktop_switcher_position' ],
@@ -149,6 +153,7 @@ add_action( 'admin_init', function () {
 		],
 	);
 
+	// phpcs:ignore
 	register_setting( 'tambar', 'tambar_mobile_switcher_position', [
 		'type'    => 'string',
 		'default' => TAMBAR_DEFAULT_SETTINGS[ 'tambar_mobile_switcher_position' ],
@@ -173,6 +178,7 @@ add_action( 'admin_init', function () {
 		'tambar',
 	);
 
+	// phpcs:ignore
 	register_setting( 'tambar', "tambar_show_for_role", [
 		'type'    => 'boolean',
 		'default' => TAMBAR_DEFAULT_SETTINGS[ 'tambar_show_for_role' ],

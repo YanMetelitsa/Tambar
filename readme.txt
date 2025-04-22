@@ -1,10 +1,10 @@
 === Tambar – Bottom Admin Bar ===
 Contributors: yanmetelitsa
 Tags: adminbar, admin, bar, position, bottom
-Stable tag: 2.3.3
+Stable tag: 2.3.4
 Requires PHP: 7.3
 Requires at least: 6.0
-Tested up to: 6.7.1
+Tested up to: 6.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,13 +21,6 @@ A fixed header is a common feature on many websites, but it can interfere with t
 * Use switcher to hide the admin bar
 * Hide the admin bar for selected roles
 
-== Installation ==
-
-1. **Visit** Plugins > Add New
-1. **Search** for "Tambar"
-1. **Install and Activate** Tambar from the Plugins page
-1. Use the [`body_class()`](https://developer.wordpress.org/reference/functions/body_class/) function in your template.
-
 == Frequently Asked Questions ==
 
 = I installed and activated the plugin, but it doesn't work =
@@ -39,41 +32,38 @@ This function should be placed inside the `<body>` tag, typically found in the `
 == Changelog ==
 
 = 2.3.3 =
-* WordPress 6.7.0 `get_plugin_data() fix` 
-
-= 2.3.2 =
-* Minor fixes
+* Fix: WordPress 6.7.0 `get_plugin_data()` 
 
 = 2.3.1 =
-* Show admin bar for role setting bux fix
+* Fix: Show admin bar for role
 
 = 2.3.0 =
-* Settings that allow hiding the admin bar for selected roles
+* New: Ability to hide the admin bar for roles
 
 = 2.2.1 =
-* Show/hide cookie value read bug fix
+* Fix: Show/hide cookie value
 
 = 2.1.9 =
-* Now plugin's assets (JS and CSS) are loaded only when the admin bar is showed
+* Fix: Plugin's assets loading only when the admin bar is displayed
 
 = 2.1.6 =
-* New switcher options
+* New: Switcher options
 
 = 2.1.0 =
-* Admin bar state via PHP (no twinks)
-* New options logic
+* New: Admin bar state via PHP (no twinks)
+* New: Options logic
 
 = 2.0.6 =
-* Admin bar position options for mobile
+* New: Admin bar position options for mobile
 
 = 2.0 =
-* New flexible plugin core
+* New: Flexible plugin core
 
 = 1.0.0 =
-* Switched to SCSS
-* Show/hide admin bar functionality
-* Added options page
-* Smoother admin bar loading
+* New: Switched to SCSS
+* New: Options page
+* New: Show/hide admin bar functionality
+* Fix: Smoother admin bar loading
 
 = 0.9.0 =
 * Initial release

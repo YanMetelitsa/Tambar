@@ -1,6 +1,6 @@
 <?php
 	// Exits if accessed directly.
-	if ( ! defined( 'ABSPATH' ) ) exit;
+	defined( 'ABSPATH' ) || exit;
 
 	$option_name  = $args[ 'option_name' ] ?? $args[ 'label_for' ];
 	$option_value = get_option( $option_name, TAMBAR_DEFAULT_SETTINGS[ $option_name ] );
