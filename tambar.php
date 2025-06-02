@@ -332,10 +332,8 @@ final class Tambar {
 	 * Retrieves Tambar option value or default value.
 	 * 
 	 * @param string $option Option name.
-	 * 
-	 * @return mixed Option value or default value.
 	 */
-	public static function get_option ( string $option ) : mixed {
+	public static function get_option ( string $option ) {
 		if ( ! str_starts_with( $option, 'tambar_' ) ) {
 			$option = "tambar_{$option}";
 		}
