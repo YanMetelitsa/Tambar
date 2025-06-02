@@ -1,8 +1,8 @@
 <?php
-	// Exits if accessed directly.
 	defined( 'ABSPATH' ) || exit;
 
-	$option_value = get_option( $args[ 'label_for' ] );
+	$option_name  = $args[ 'label_for' ];
+	$option_value = self::get_option( $option_name );
 ?>
 
 <select name="<?php echo esc_attr( $args[ 'label_for' ] ); ?>" id="<?php echo esc_attr( $args[ 'label_for' ] ); ?>">
@@ -14,6 +14,3 @@
 		); ?>
 	<?php endforeach; ?>
 </select>
-<?php if ( isset( $args[ 'description' ] ) ) : ?>
-	<p class="description"><?php echo esc_html( $args[ 'description' ] ); ?></p>
-<?php endif; ?>

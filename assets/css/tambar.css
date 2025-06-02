@@ -1,138 +1,164 @@
 /* Media */
-/* Elements */
-/* Common styles */
 /* Variables */
 :root {
-  --tambar-adminbar-size: var( --wp-admin--admin-bar--height );
-  --tambar-switch-size: calc( var( --tambar-adminbar-size ) * 1 );
-  --tambar-switch-color: #2c3338;
-  --tambar-animation-function: ease;
-  --tambar-animation-time: .25s;
+  --tambar-admin-bar-size: var( --wp-admin--admin-bar--height );
+  --tambar-switcher-size: var( --tambar-admin-bar-size );
+  --tambar-animation: ease-in-out .1s ;
 }
 
-/* Any media */
+/* HTML */
 html {
-  transition: margin var(--tambar-animation-function) var(--tambar-animation-time);
-  /** Visible */
+  transition: margin var(--tambar-animation);
+  /* Desktop */
+  /* Mobile */
   /* Hidden */
 }
-html #tambar-switcher {
-  background-color: var(--tambar-switch-color);
-  width: var(--tambar-switch-size);
-  height: var(--tambar-switch-size);
+@media screen and (min-width: 783px) {
+  html {
+    /* Bottom */
+  }
+  html:has(body.tambar-desktop-bottom) {
+    margin-top: 0 !important;
+    margin-bottom: var(--tambar-admin-bar-size) !important;
+  }
+}
+@media screen and (max-width: 782px) {
+  html {
+    /* Bottom */
+  }
+  html:has(body.tambar-mobile-bottom) {
+    margin-top: 0 !important;
+    margin-bottom: var(--tambar-admin-bar-size) !important;
+  }
+}
+html:has(body.tambar-hidden) {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Admin Bar */
+#wpadminbar {
+  --translate-k: 1;
+  transition: translate var(--tambar-animation);
+  position: fixed;
+  /* Bottom */
+  /* Hidden */
+}
+@media screen and (min-width: 783px) {
+  body.tambar-desktop-bottom #wpadminbar {
+    --translate-k: -1;
+    top: unset;
+    bottom: 0;
+  }
+  body.tambar-desktop-bottom #wpadminbar .ab-sub-wrapper {
+    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.2);
+    top: unset;
+    bottom: 100%;
+  }
+}
+@media screen and (max-width: 782px) {
+  body.tambar-mobile-bottom #wpadminbar {
+    --translate-k: -1;
+    top: unset;
+    bottom: 0;
+  }
+  body.tambar-mobile-bottom #wpadminbar .ab-sub-wrapper {
+    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.2);
+    top: unset;
+    bottom: 100%;
+  }
+}
+body.tambar-hidden #wpadminbar {
+  translate: 0 calc(0px - var(--tambar-admin-bar-size) * var(--translate-k));
+}
+
+/* Switcher */
+#tambar-switcher {
+  background-color: #2c3338;
+  width: var(--tambar-switcher-size);
+  height: var(--tambar-switcher-size);
+  transition: top var(--tambar-animation), bottom var(--tambar-animation);
   cursor: pointer;
   position: fixed;
-  top: var(--tambar-adminbar-size);
-  left: var(--tambar-switch-size);
-  transition: transform var(--tambar-animation-function) var(--tambar-animation-time);
+  top: var(--tambar-admin-bar-size);
+  left: var(--tambar-switcher-size);
   z-index: 99999;
-  /* First icon layer */
+  /* Icon */
+  /* Bottom */
+  /* Right */
+  /* Hidden top */
+  /* Hidden bottom */
 }
-html #tambar-switcher > span {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transition: transform var(--tambar-animation-function) var(--tambar-animation-time);
-  /* Second icon layer */
-}
-html #tambar-switcher > span::after {
+#tambar-switcher::after {
+  --init-rotation: 0deg;
   content: "";
-  background-image: url(../img/arrow.svg);
+  background-image: url(../images/arrow.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 40%;
   width: 100%;
   height: 100%;
+  rotate: var(--init-rotation);
   position: absolute;
+  /* Bottom */
+  /* Hidden */
 }
-html #wpadminbar {
-  position: fixed;
-  transition: transform var(--tambar-animation-function) var(--tambar-animation-time);
+@media screen and (min-width: 783px) {
+  body.tambar-desktop-bottom #tambar-switcher::after {
+    --init-rotation: 180deg;
+  }
 }
-html:has(body.tambar-hidden) {
-  margin-top: 0 !important;
+@media screen and (max-width: 782px) {
+  body.tambar-mobile-bottom #tambar-switcher::after {
+    --init-rotation: 180deg;
+  }
 }
-html:has(body.tambar-hidden) #tambar-switcher {
-  transform: translateY(calc(0px - var(--tambar-adminbar-size)));
+body.tambar-hidden #tambar-switcher::after {
+  rotate: calc(var(--init-rotation) + 180deg);
 }
-html:has(body.tambar-hidden) #tambar-switcher > span::after {
-  transform: rotate(180deg);
+@media screen and (min-width: 783px) {
+  body.tambar-desktop-bottom #tambar-switcher {
+    top: unset;
+    bottom: var(--tambar-admin-bar-size);
+  }
 }
-html:has(body.tambar-hidden) #wpadminbar {
-  transform: translateY(-100%);
+@media screen and (max-width: 782px) {
+  body.tambar-mobile-bottom #tambar-switcher {
+    top: unset;
+    bottom: var(--tambar-admin-bar-size);
+  }
+}
+@media screen and (min-width: 783px) {
+  body.tambar-switcher-desktop-right #tambar-switcher {
+    left: unset;
+    right: var(--tambar-switcher-size);
+  }
+}
+@media screen and (max-width: 782px) {
+  body.tambar-switcher-mobile-right #tambar-switcher {
+    left: unset;
+    right: var(--tambar-switcher-size);
+  }
+}
+@media screen and (min-width: 783px) {
+  body.tambar-hidden.tambar-desktop-top #tambar-switcher {
+    top: 0;
+  }
+}
+@media screen and (max-width: 782px) {
+  body.tambar-hidden.tambar-mobile-top #tambar-switcher {
+    top: 0;
+  }
+}
+@media screen and (min-width: 783px) {
+  body.tambar-hidden.tambar-desktop-bottom #tambar-switcher {
+    bottom: 0;
+  }
+}
+@media screen and (max-width: 782px) {
+  body.tambar-hidden.tambar-mobile-bottom #tambar-switcher {
+    bottom: 0;
+  }
 }
 
-/* Desktop */
-@media only screen and (min-width: 782px) {
-  html:has(body.tambar-desktop-bottom) {
-    margin-top: 0 !important;
-    margin-bottom: var(--tambar-adminbar-size);
-    /* Visible */
-    /* Hidden */
-  }
-  html:has(body.tambar-desktop-bottom) #tambar-switcher {
-    top: unset;
-    bottom: var(--tambar-adminbar-size);
-  }
-  html:has(body.tambar-desktop-bottom) #tambar-switcher > span {
-    transform: rotate(180deg);
-  }
-  html:has(body.tambar-desktop-bottom) #wpadminbar {
-    top: unset;
-    bottom: 0;
-  }
-  html:has(body.tambar-desktop-bottom) #wpadminbar .ab-sub-wrapper {
-    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.2);
-    transform: translateY(calc(-100% - var(--tambar-adminbar-size)));
-  }
-  html:has(body.tambar-desktop-bottom):has(body.tambar-hidden) {
-    margin-bottom: 0 !important;
-  }
-  html:has(body.tambar-desktop-bottom):has(body.tambar-hidden) #wpadminbar {
-    transform: translateY(100%);
-  }
-  html:has(body.tambar-desktop-bottom):has(body.tambar-hidden) #tambar-switcher {
-    transform: translateY(var(--tambar-adminbar-size));
-  }
-  html:has(body.tambar-desktop-switcher-right) #tambar-switcher {
-    right: var(--tambar-switch-size);
-    left: unset;
-  }
-}
-/* Mobile */
-@media only screen and (max-width: 782px) {
-  html:has(body.tambar-mobile-bottom) {
-    margin-top: 0 !important;
-    margin-bottom: var(--tambar-adminbar-size);
-    /* Visible */
-    /* Hidden */
-  }
-  html:has(body.tambar-mobile-bottom) #tambar-switcher {
-    top: unset;
-    bottom: var(--tambar-adminbar-size);
-  }
-  html:has(body.tambar-mobile-bottom) #tambar-switcher > span {
-    transform: rotate(180deg);
-  }
-  html:has(body.tambar-mobile-bottom) #wpadminbar {
-    top: unset;
-    bottom: 0;
-  }
-  html:has(body.tambar-mobile-bottom) #wpadminbar .ab-sub-wrapper {
-    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.2);
-    transform: translateY(calc(-100% - var(--tambar-adminbar-size)));
-  }
-  html:has(body.tambar-mobile-bottom):has(body.tambar-hidden) {
-    margin-bottom: 0 !important;
-  }
-  html:has(body.tambar-mobile-bottom):has(body.tambar-hidden) #wpadminbar {
-    transform: translateY(100%);
-  }
-  html:has(body.tambar-mobile-bottom):has(body.tambar-hidden) #tambar-switcher {
-    transform: translateY(var(--tambar-adminbar-size));
-  }
-  html:has(body.tambar-mobile-switcher-right) #tambar-switcher {
-    right: var(--tambar-switch-size);
-    left: unset;
-  }
-}/*# sourceMappingURL=tambar.css.map */
+/*# sourceMappingURL=tambar.css.map */

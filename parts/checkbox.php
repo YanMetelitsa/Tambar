@@ -1,9 +1,8 @@
 <?php
-	// Exits if accessed directly.
 	defined( 'ABSPATH' ) || exit;
 
 	$option_name  = $args[ 'option_name' ] ?? $args[ 'label_for' ];
-	$option_value = get_option( $option_name, TAMBAR_DEFAULT_SETTINGS[ $option_name ] );
+	$option_value = self::get_option( $option_name );
 
 	if ( is_array( $option_value ) && isset( $args[ 'option_key' ] ) ) {
 		$option_value = $option_value[ $args[ 'option_key' ] ] ?? false;
@@ -15,6 +14,7 @@
 		esc_attr( $args[ 'label_for' ] ),
 		checked( $option_value, true, false ),
 	); ?>
+
 	<?php if ( isset( $args[ 'label' ] ) ) : ?>
 		<?php echo esc_html( $args[ 'label' ] ); ?>
 	<?php endif; ?>

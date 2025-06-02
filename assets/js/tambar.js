@@ -1,12 +1,18 @@
 'use strict';
 
-/** Toggles WordPress adminbar state */
+/**
+ * Toggles WordPress admin bar state.
+ */
 function tambarToggle () {
-	document.querySelectorAll( 'body' ).forEach( body => {
-		body.classList.toggle( 'tambar-hidden' );
+	document.body.classList.toggle( 'tambar-hidden' );
 
-		const isHidden = body.classList.contains( 'tambar-hidden' ) ? 1 : 0;
+	const isHidden = document.body.classList.contains( 'tambar-hidden' ) ? 1 : 0;
 
-		document.cookie = `tambar-is-hidden=${isHidden};max-age=${10*3600*24};path=/;`;
-	});
+	document.cookie = `tambar-is-hidden=${isHidden};max-age=${10*3600*24};path=/;`;
 }
+
+document.addEventListener( 'keydown', e => {
+    if ( e.shiftKey && [ 'ArrowUp', 'ArrowDown' ].includes( e.key ) ) {
+       tambarToggle();
+    }
+});

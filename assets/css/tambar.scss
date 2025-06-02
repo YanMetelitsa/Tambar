@@ -1,169 +1,197 @@
 /* Media */
-$mobile-desktop-border: 782px;
-
-@mixin media-desktop {
-	@media only screen and ( min-width: $mobile-desktop-border ) {
+@mixin tambar-desktop {
+	@media screen and ( min-width: 783px ) {
 		@content;
 	}
 }
-@mixin media-mobile {
-	@media only screen and ( max-width: $mobile-desktop-border ) {
-		@content;
-	}
-}
-
-/* Elements */
-@mixin element-adminbar {
-	#wpadminbar {
-		@content;
-	}
-}
-@mixin element-switch {
-	#tambar-switcher {
+@mixin tambar-mobile {
+	@media screen and ( max-width: 782px ) {
 		@content;
 	}
 }
 
-/* Common styles */
-@mixin bottom-styles {
-	margin-top: 0 !important;
-	margin-bottom: var( --tambar-adminbar-size );
-
-	/* Visible */
-	@include element-switch {
-		top: unset;
-		bottom: var( --tambar-adminbar-size );
-
-		> span {
-			transform: rotate( 180deg );
-		}
-	}
-	@include element-adminbar {
-		top: unset;
-		bottom: 0;
-
-		.ab-sub-wrapper {
-			box-shadow: 0 -3px 5px rgba( 0, 0, 0, .2 );
-
-			transform: translateY( calc( -100% - var( --tambar-adminbar-size ) ) );
+@mixin tambar-bottom {
+	body.tambar-desktop-bottom & {
+		@include tambar-desktop {
+			@content;
 		}
 	}
 
-	/* Hidden */
-	&:has( body.tambar-hidden ) {
-		margin-bottom: 0 !important;
-
-		@include element-adminbar {
-			transform: translateY( 100% );
-		}
-		@include element-switch {
-			transform: translateY( var( --tambar-adminbar-size ) );
+	body.tambar-mobile-bottom & {
+		@include tambar-mobile {
+			@content;
 		}
 	}
 }
-@mixin switcher-right-styles {
-	@include element-switch {
-		right: var( --tambar-switch-size );
-		left: unset;
+@mixin tambar-right {
+	body.tambar-switcher-desktop-right & {
+		@include tambar-desktop {
+			@content;
+		}
+	}
+
+	body.tambar-switcher-mobile-right & {
+		@include tambar-mobile {
+			@content;
+		}
 	}
 }
+
+@mixin tambar-hidden-top {
+	body.tambar-hidden.tambar-desktop-top & {
+		@include tambar-desktop {
+			@content;
+		}
+	}
+
+	body.tambar-hidden.tambar-mobile-top & {
+		@include tambar-mobile {
+			@content;
+		}
+	}
+}
+@mixin tambar-hidden-bottom {
+	body.tambar-hidden.tambar-desktop-bottom & {
+		@include tambar-desktop {
+			@content;
+		}
+	}
+
+	body.tambar-hidden.tambar-mobile-bottom & {
+		@include tambar-mobile {
+			@content;
+		}
+	}
+}
+
 
 /* Variables */
 :root {
-	--tambar-adminbar-size: var( --wp-admin--admin-bar--height );
+	--tambar-admin-bar-size: var( --wp-admin--admin-bar--height );
+	--tambar-switcher-size: var( --tambar-admin-bar-size );
 
-	--tambar-switch-size: calc( var( --tambar-adminbar-size ) * 1 );
-	--tambar-switch-color: #2c3338;
-
-	--tambar-animation-function: ease;
-	--tambar-animation-time: .25s;
+	--tambar-animation: ease-in-out .1s
 }
 
-/* Any media */
+/* HTML */
 html {
-	transition: margin var( --tambar-animation-function ) var( --tambar-animation-time );
-
-	/** Visible */
-	@include element-switch {
-		background-color: var( --tambar-switch-color );
-		width: var( --tambar-switch-size );
-		height: var( --tambar-switch-size );
+	transition: margin var( --tambar-animation );
 	
-		cursor: pointer;
-	
-		position: fixed;
-		top: var( --tambar-adminbar-size );
-		left: var( --tambar-switch-size );
-	
-		transition: transform var( --tambar-animation-function ) var( --tambar-animation-time );
-
-		z-index: 99999;
-	
-		/* First icon layer */
-		> span {
-			width: 100%;
-			height: 100%;
-
-			position: absolute;
-
-			transition: transform var( --tambar-animation-function ) var( --tambar-animation-time );
-	
-			/* Second icon layer */
-			&::after {
-				content: '';
-		
-				background-image: url( ../img/arrow.svg );
-				background-repeat: no-repeat;
-				background-position: center;
-				background-size: 40%;
-				width: 100%;
-				height: 100%;
-		
-				position: absolute;
-			}
+	/* Desktop */
+	@include tambar-desktop {
+		/* Bottom */
+		&:has( body.tambar-desktop-bottom ) {
+			margin-top: 0 !important;
+			margin-bottom: var( --tambar-admin-bar-size ) !important;
 		}
 	}
-	@include element-adminbar {
-		position: fixed;
 
-		transition: transform var( --tambar-animation-function ) var( --tambar-animation-time );
+	/* Mobile */
+	@include tambar-mobile {
+		/* Bottom */
+		&:has( body.tambar-mobile-bottom ) {
+			margin-top: 0 !important;
+			margin-bottom: var( --tambar-admin-bar-size ) !important;
+		}
 	}
 
 	/* Hidden */
 	&:has( body.tambar-hidden ) {
 		margin-top: 0 !important;
-
-		@include element-switch {
-			transform: translateY( calc( 0px - var( --tambar-adminbar-size ) ) );
-
-			> span {
-				&::after {
-					transform: rotate( 180deg );
-				}
-			}
-		}
-		@include element-adminbar {
-			transform: translateY( -100% );
-		}
+		margin-bottom: 0 !important;
 	}
 }
 
-/* Desktop */
-@include media-desktop {
-	html:has( body.tambar-desktop-bottom ) {
-		@include bottom-styles;
+/* Admin Bar */
+#wpadminbar {
+	--translate-k: 1;
+
+	transition: translate var( --tambar-animation );
+
+	position: fixed;
+
+	/* Bottom */
+	@include tambar-bottom {
+		--translate-k: -1;
+
+		top: unset;
+		bottom: 0;
+
+		.ab-sub-wrapper {
+			box-shadow: 0 -3px 5px rgba( 0, 0, 0, .2 );
+			
+			top: unset;
+			bottom: 100%;
+		}
 	}
-	html:has( body.tambar-desktop-switcher-right ) {
-		@include switcher-right-styles;
+
+	/* Hidden */
+	body.tambar-hidden & {
+		translate: 0 calc( 0px - var( --tambar-admin-bar-size ) * var( --translate-k ) );
 	}
 }
 
-/* Mobile */
-@include media-mobile {
-	html:has( body.tambar-mobile-bottom ) {
-		@include bottom-styles;
+/* Switcher */
+#tambar-switcher {
+	background-color: #2c3338;
+	width: var( --tambar-switcher-size );
+	height: var( --tambar-switcher-size );
+	transition: top var( --tambar-animation ),
+				bottom var( --tambar-animation );
+
+	cursor: pointer;
+
+	position: fixed;
+	top: var( --tambar-admin-bar-size );
+	left: var( --tambar-switcher-size );
+	z-index: 99999;
+
+	/* Icon */
+	&::after {
+		--init-rotation: 0deg;
+
+		content: '';
+
+		background-image: url( ../images/arrow.svg );
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 40%;
+		width: 100%;
+		height: 100%;
+		rotate: var( --init-rotation );
+
+		position: absolute;
+
+		/* Bottom */
+		@include tambar-bottom {
+			--init-rotation: 180deg;
+		}
+
+		/* Hidden */
+		body.tambar-hidden & {
+			rotate: calc( var( --init-rotation ) + 180deg );
+		}
 	}
-	html:has( body.tambar-mobile-switcher-right ) {
-		@include switcher-right-styles;
+
+	/* Bottom */
+	@include tambar-bottom {
+		top: unset;
+		bottom: var( --tambar-admin-bar-size );
+	}
+
+	/* Right */
+	@include tambar-right {
+		left: unset;
+		right: var( --tambar-switcher-size );
+	}
+
+	/* Hidden top */
+	@include tambar-hidden-top {
+		top: 0;
+	}
+
+	/* Hidden bottom */
+	@include tambar-hidden-bottom {
+		bottom: 0;
 	}
 }
