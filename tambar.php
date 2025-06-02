@@ -320,10 +320,9 @@ final class Tambar {
 
 				add_settings_field( $field_slug, $field[ 'title' ],
 					fn ( $args ) => include self::get_file_path( "parts/{$template}.php" ),
-					'tambar', $section_slug, [
+					'tambar', $section_slug, array_merge([
 						'label_for' => $setting_slug,
-						...$field[ 'args' ],
-					],
+					], $field[ 'args' ] ),
 				);
 			}
 		}
