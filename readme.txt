@@ -36,6 +36,12 @@ For the plugin to function properly, your theme must include WordPress [`body_cl
 
 The `body_class()` function generates essential CSS classes that the plugin relies on for proper operation. Most modern WordPress themes include this by default, but some custom themes may omit it.
 
+== Screenshots ==
+
+1. Admin Bar at Bottom
+2. Hide Admin Bar
+3. Settings Page
+
 == Changelog ==
 
 = 3.0.0 =
