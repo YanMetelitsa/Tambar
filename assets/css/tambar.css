@@ -3,7 +3,7 @@
 :root {
   --tambar-admin-bar-size: var( --wp-admin--admin-bar--height );
   --tambar-switcher-size: var( --tambar-admin-bar-size );
-  --tambar-animation: ease-in-out .1s ;
+  --tambar-animation: linear .05s;
 }
 
 /* HTML */

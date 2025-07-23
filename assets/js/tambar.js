@@ -11,7 +11,12 @@ function tambarToggle () {
 	document.cookie = `tambar-is-hidden=${isHidden};max-age=${10*3600*24};path=/;`;
 }
 
-document.addEventListener( 'keydown', e => {
+window.addEventListener( 'load', e => {
+	if ( typeof qm == 'object' && qm?.menu?.sub[ 'query-monitor-warnings' ] ) {
+		document.body.classList.remove( 'tambar-hidden' );
+	}
+});
+window.addEventListener( 'keydown', e => {
     if ( e.shiftKey && [ 'ArrowUp', 'ArrowDown' ].includes( e.key ) ) {
        tambarToggle();
     }

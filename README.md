@@ -26,11 +26,14 @@ The `body_class()` function generates essential CSS classes that the plugin reli
 
 # Changelog
 
+## 3.0.1
+* New: [Query Monitor](https://wordpress.org/plugins/query-monitor/) integration - admin bar opens if there are warnings
+
 ## 3.0.0
-* New: Complete performance optimization and enhanced functionality.
+* New: Complete performance optimization and enhanced functionality
 
 ## 2.3.3
-* Fix: WordPress 6.7.0 compatibility issue with get_plugin_data().
+* Fix: WordPress 6.7.0 compatibility issue with `get_plugin_data()`
 
 ## 2.3.0
 * New: Ability to not show the admin bar for specific user roles
