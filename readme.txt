@@ -1,7 +1,7 @@
 === Tambar – Bottom Admin Bar ===
 Contributors: yanmetelitsa
 Tags: admin, adminbar, bar, bottom bar, toolbar
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 Requires PHP: 7.4
 Requires at least: 6.0
 Tested up to: 6.8

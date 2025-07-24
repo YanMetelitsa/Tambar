@@ -3,7 +3,7 @@
 /*
  * Plugin Name:       Tambar – Bottom Admin Bar
  * Description:       Easily change the admin bar position on your site or hide it for specific user roles.
- * Version:           3.0.1
+ * Version:           3.0.2
  * Requires PHP:      7.4
  * Requires at least: 6.0
  * Tested up to:      6.8

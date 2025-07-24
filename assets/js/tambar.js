@@ -12,7 +12,7 @@ function tambarToggle () {
 }
 
 window.addEventListener( 'load', e => {
-	if ( typeof qm == 'object' && qm?.menu?.sub[ 'query-monitor-warnings' ] ) {
+	if ( typeof QueryMonitorData == 'object' && QueryMonitorData?.menu?.sub[ 'query-monitor-warnings' ] ) {
 		document.body.classList.remove( 'tambar-hidden' );
 	}
 });
