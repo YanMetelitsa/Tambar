@@ -11,10 +11,11 @@ Sticky header is a widely used feature on many websites, but it can conflict wit
 
 ## Advantages
 
-* **Feather-light** – Zero performance impact
-* **Native WordPress** styling – Seamless UI integration
-* **Mobile-optimized** – Perfect responsive behavior
-* **Keyboard-friendly** – Work faster with shortcuts
+* 🪶 **Feather-light** – Zero performance impact
+* 🎨 **Native WordPress** styling – Seamless UI integration
+* 📱 **Mobile-optimized** – Perfect responsive behavior
+* ⌨️ **Keyboard-friendly** – Work faster with shortcuts
+* 🧑‍💻 **For Developers** – Integrated with Query Monitor
 
 # Frequently Asked Questions
 
