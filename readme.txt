@@ -27,7 +27,7 @@ The sticky header is a widely used feature on many websites, but it can conflict
 * 🎨 **Native WordPress** styling – Seamless UI integration
 * 📱 **Mobile-optimized** – Perfect responsive behavior
 * ⌨️ **Keyboard-friendly** – Work faster with keyboard shortcuts
-* 🧑‍💻 **For Developers** – Integrated with Query Monitor
+* 🧑‍💻 **For Developers** – Supports third-party plugins
 
 == Frequently Asked Questions ==
 
