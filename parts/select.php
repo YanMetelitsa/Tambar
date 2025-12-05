@@ -1,16 +1,16 @@
 <?php
 	defined( 'ABSPATH' ) || exit;
 
-	$option_name  = $args[ 'label_for' ];
-	$option_value = self::get_option( $option_name );
+	$tambar_option_name  = $args[ 'label_for' ];
+	$tambar_option_value = self::get_option( $tambar_option_name );
 ?>
 
 <select name="<?php echo esc_attr( $args[ 'label_for' ] ); ?>" id="<?php echo esc_attr( $args[ 'label_for' ] ); ?>">
-	<?php foreach ( $args[ 'values' ] as $value => $label ) : ?>
+	<?php foreach ( $args[ 'values' ] as $tambar_value => $tambar_label ) : ?>
 		<?php printf( '<option value="%s" %s>%s</option>',
-			esc_attr( $value ),
-			selected( $option_value, $value, false ),
-			esc_html( $label ),
+			esc_attr( $tambar_value ),
+			selected( $tambar_option_value, $tambar_value, false ),
+			esc_html( $tambar_label ),
 		); ?>
 	<?php endforeach; ?>
 </select>

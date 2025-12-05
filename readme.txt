@@ -1,10 +1,10 @@
 === Tambar – Bottom Admin Bar ===
 Contributors: yanmetelitsa
 Tags: admin, adminbar, bar, bottom bar, toolbar
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 Requires PHP: 7.4
 Requires at least: 6.0
-Tested up to: 6.8
+Tested up to: 6.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
