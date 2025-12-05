@@ -3,10 +3,10 @@
 /*
  * Plugin Name:       Tambar – Bottom Admin Bar
  * Description:       Easily change the admin bar position on your site or hide it for specific user roles.
- * Version:           3.0.2
+ * Version:           3.0.3
  * Requires PHP:      7.4
  * Requires at least: 6.0
- * Tested up to:      6.8
+ * Tested up to:      6.9
  * Author:            Yan Metelitsa
  * Author URI:        https://yanmet.com/
  * License:           GPLv3
@@ -165,6 +165,7 @@ final class Tambar {
 
 			// Roles.
 			$roles = wp_roles()->role_names;
+
 			self::register_settings( 'roles', __( 'Show Admin Bar for Roles', 'tambar' ), [
 				'show_for_role' => array_combine(
 					array_keys( $roles ),
@@ -193,7 +194,7 @@ final class Tambar {
 
 		// Hides admin bar for roles.
 		add_filter( 'show_admin_bar', function ( $show_admin_bar ) {
-			// Return if user not logged in.
+			// Return init value if user not logged in.
 			if ( ! is_user_logged_in() ) {
 				return $show_admin_bar;
 			}
@@ -202,10 +203,17 @@ final class Tambar {
 			$current_user_roles = wp_get_current_user()->roles;
 			$show_for_roles     = self::get_option( 'show_for_role' );
 
+			// If all roles disabled.
+			if ( '' === $show_for_roles ) {
+				return false;
+			}
+
+			// If incorrect type.
 			if ( ! is_array( $show_for_roles ) ) {
 				return $show_admin_bar;
 			}
 
+			// If role disabled.
 			if ( empty( array_intersect( $current_user_roles, array_keys( $show_for_roles ) ) ) ) {
 				return false;
 			}
@@ -213,7 +221,7 @@ final class Tambar {
 			return $show_admin_bar;
 		});
 
-		// Sets <body> classes.
+		// Sets `<body>` classes.
 		add_filter( 'body_class', function ( $classes ) {
 			// Returns if admin bar not showing.
 			if ( ! is_admin_bar_showing() ) {
@@ -339,7 +347,7 @@ final class Tambar {
 		}
 
 		$default_value = self::$default_options[
-			preg_replace( '/tambar_/', '', $option, 1 )
+			preg_replace( '/^tambar_/', '', $option, 1 )
 		] ?? '';
 
 		return get_option( $option, $default_value );
