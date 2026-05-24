@@ -5,8 +5,8 @@
  * Description:       Easily change the admin bar position on your site or hide it for specific user roles.
  * Version:           3.0.4
  * Requires PHP:      7.4
- * Requires at least: 6.0
- * Tested up to:      6.9
+ * Requires at least: 4.6
+ * Tested up to:      7.0
  * Author:            Yan Metelitsa
  * Author URI:        https://yanmet.com/
  * License:           GPLv3

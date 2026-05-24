@@ -17,7 +17,7 @@ window.addEventListener( 'load', e => {
 	}
 });
 window.addEventListener( 'keydown', e => {
-    if ( e.shiftKey && [ 'ArrowUp', 'ArrowDown' ].includes( e.key ) ) {
-       tambarToggle();
-    }
+	if ( e.shiftKey && [ 'ArrowUp', 'ArrowDown' ].includes( e.key ) ) {
+		tambarToggle();
+	}
 });
