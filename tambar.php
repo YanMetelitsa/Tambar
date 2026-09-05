@@ -3,7 +3,7 @@
 /*
  * Plugin Name:       Tambar – Bottom Admin Bar
  * Description:       Easily change the admin bar position on your site or hide it for specific user roles.
- * Version:           3.0.4
+ * Version:           3.0.5
  * Requires PHP:      7.4
  * Requires at least: 4.6
  * Tested up to:      7.1
@@ -326,7 +326,7 @@ final class Tambar {
 				$template   = (string) $field[ 'template' ];
 				$field_slug = $setting_slug . ( ! is_numeric( $field_postfix ) ? "_{$field_postfix}" : '' );
 
-				add_settings_field( $field_slug, $field[ 'title' ],
+				add_settings_field( $field_slug, $field[ 'title' ], // phpcs:ignore
 					fn ( $args ) => include self::get_file_path( "parts/{$template}.php" ),
 					'tambar', $section_slug, array_merge([
 						'label_for' => $setting_slug,
@@ -342,7 +342,7 @@ final class Tambar {
 	 * @param string $option Option name.
 	 */
 	public static function get_option ( string $option ) {
-		if ( ! str_starts_with( $option, 'tambar_' ) ) {
+		if ( substr( $option, 0, strlen( 'tambar_' ) ) !== 'tambar_' ) {
 			$option = "tambar_{$option}";
 		}
 
