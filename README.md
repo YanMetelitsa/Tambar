@@ -28,32 +28,60 @@ The `body_class()` function generates essential CSS classes that the plugin reli
 # Changelog
 
 ## 3.0.1
-* New: [Query Monitor](https://wordpress.org/plugins/query-monitor/) support – admin bar opens if there are warnings
+
+**Added**
+
+* [Query Monitor](https://wordpress.org/plugins/query-monitor/) support – admin bar opens if there are warnings
 
 ## 3.0.0
-* New: Complete performance optimization and enhanced functionality
+
+**Fixed**
+
+* Complete performance optimization and enhanced functionality
 
 ## 2.3.3
-* Fix: WordPress 6.7.0 compatibility issue with `get_plugin_data()`
+
+**Fixed**
+
+* WordPress 6.7.0 compatibility issue with `get_plugin_data()`
 
 ## 2.3.0
-* New: Option to hide the admin bar for specific user roles
+
+**Added**
+
+* Option to hide the admin bar for specific user roles
 
 ## 2.1.9
-* Fix: Plugin assets now load only when the admin bar is shown to the user
+
+**Fixed**
+
+* Plugin assets now load only when the admin bar is shown to the user
 
 ## 2.1.6
-* New: Switcher options
+
+**Added**
+
+* Switcher options
 
 ## 2.1.0
-* New: Admin bar state controlled by CSS (no glare)
+
+**Fixed**
+
+* Admin bar state controlled by CSS (no flicker)
 
 ## 2.0.6
-* New: Mobile position settings
+
+**Added**
+
+* Mobile position options
 
 ## 1.0.0
-* New: Added options page
-* New: Admin bar hiding feature
+
+**Added**
+
+* Options page
+* Admin bar hiding feature
 
 ## 0.9.0
+
 * Initial release

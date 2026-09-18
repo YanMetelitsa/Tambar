@@ -342,6 +342,7 @@ final class Tambar {
 	 * @param string $option Option name.
 	 */
 	public static function get_option ( string $option ) {
+		// ! str_starts_with( $option, 'tambar_' )
 		if ( substr( $option, 0, strlen( 'tambar_' ) ) !== 'tambar_' ) {
 			$option = "tambar_{$option}";
 		}
