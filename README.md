@@ -1,3 +1,14 @@
+# Tambar – Bottom Admin Bar
+
+![Tambar – Bottom Admin Bar Banner](https://ps.w.org/tambar/assets/banner-1544x500.png)
+
+[![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![Required PHP](https://img.shields.io/wordpress/plugin/required-php/tambar?label=Required%20PHP)
+![Required WordPress](https://img.shields.io/wordpress/plugin/wp-version/tambar?label=Required%20WordPress)
+
+![Downloads](https://img.shields.io/wordpress/plugin/dt/tambar.svg?label=WordPress.org%20Downloads)
+[![Rating](https://img.shields.io/wordpress/plugin/r/tambar.svg?label=WordPress.org%20Rating)](https://wordpress.org/support/plugin/tambar/reviews/)
+
 # Description
 
 The sticky header is a widely used feature on many websites, but it can conflict with the WordPress admin bar. Take full control of your WordPress admin bar – reposition, collapse, or hide it!
@@ -26,6 +37,12 @@ For the plugin to function properly, your theme must include the WordPress [`bod
 The `body_class()` function generates essential CSS classes that the plugin relies on for proper operation. Most modern WordPress themes include it by default, but some custom themes may omit it.
 
 # Changelog
+
+## 3.0.6
+
+*Fixed*
+
+* [Query Monitor](https://wordpress.org/plugins/query-monitor/) support
 
 ## 3.0.1
 

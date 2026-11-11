@@ -1,7 +1,7 @@
 === Tambar – Bottom Admin Bar ===
 Contributors: yanmetelitsa
 Tags: admin, adminbar, bar, bottom bar, toolbar
-Stable tag: 3.0.5
+Stable tag: 3.0.6
 Requires PHP: 7.4
 Requires at least: 4.6
 Tested up to: 7.1
@@ -44,6 +44,12 @@ The `body_class()` function generates essential CSS classes that the plugin reli
 3. Settings Page
 
 == Changelog ==
+
+= 3.0.6 =
+
+*Fixed*
+
+* [Query Monitor](https://wordpress.org/plugins/query-monitor/) support
 
 = 3.0.1 =
 

@@ -12,8 +12,13 @@ function tambarToggle () {
 }
 
 window.addEventListener( 'load', e => {
-	if ( typeof QueryMonitorData == 'object' && QueryMonitorData?.menu?.sub?.php_errors?.warning_count ) {
-		document.body.classList.remove( 'tambar-hidden' );
+	if ( typeof QueryMonitorData == 'object' ) {
+		if (
+			QueryMonitorData?.menu?.sub?.php_errors?.warning_count ||
+			QueryMonitorData?.data?.php_errors?.data?.errors
+		) {
+			document.body.classList.remove( 'tambar-hidden' );
+		}
 	}
 });
 window.addEventListener( 'keydown', e => {
